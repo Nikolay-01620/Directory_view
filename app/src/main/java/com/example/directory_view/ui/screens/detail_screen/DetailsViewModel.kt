@@ -8,8 +8,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class DetailsViewModel(private val directoryRepository: DirectoryRepository) : ViewModel() {
+class DetailsViewModel @Inject constructor(private val directoryRepository: DirectoryRepository) :
+    ViewModel() {
 
     private val _contacts = MutableStateFlow<DirectoryDomain?>(null)
     val contacts: StateFlow<DirectoryDomain?> = _contacts.asStateFlow()

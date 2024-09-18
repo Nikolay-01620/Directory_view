@@ -1,6 +1,8 @@
 package com.example.directory_view.di.components
 
 import android.content.Context
+import com.example.data.data.di_modules.DatabaseModule
+import com.example.data.data.di_modules.RepositoryModule
 import com.example.directory_view.MainActivity
 import com.example.directory_view.di.modules.ViewModelFactoryModule
 import com.example.directory_view.di.modules.ViewModelModule
@@ -8,10 +10,13 @@ import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
+@Singleton
 @Component(
     modules = [
         ViewModelModule::class,
-        ViewModelFactoryModule::class]
+        ViewModelFactoryModule::class,
+        RepositoryModule::class,
+        DatabaseModule::class]
 )
 interface ApplicationComponent {
 

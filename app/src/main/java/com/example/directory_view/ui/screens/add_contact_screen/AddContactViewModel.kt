@@ -11,8 +11,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AddContactViewModel(private val directoryRepository: DirectoryRepository) : ViewModel() {
+class AddContactViewModel @Inject constructor(private val directoryRepository: DirectoryRepository) :
+    ViewModel() {
 
     private val _name = MutableStateFlow("")
     val name: StateFlow<String> = _name.asStateFlow()
