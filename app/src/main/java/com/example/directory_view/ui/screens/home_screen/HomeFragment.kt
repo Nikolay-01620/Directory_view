@@ -35,7 +35,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            recyclerView.layoutManager = LinearLayoutManager(this@HomeFragment.context)
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = adapter
             adapter.addItem(contactItems)
         }
