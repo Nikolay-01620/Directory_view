@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.directory_view.ui.screens.main_screen.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_addContactFragment"
+            app:destination="@id/addContactFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addContactFragment"
+        android:name="com.example.directory_view.ui.screens.add_contact_screen.AddContactFragment"
+        android:label="Add Contact"
+        tools:layout="@layout/fragment_add_contact" />
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.directory_view.ui.screens.detail_screen.DetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_editFragment"
+            app:destination="@id/editFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.directory_view.ui.screens.edit_screen.EditFragment"
+        android:label="Edit Contact"
+        tools:layout="@layout/fragment_edit" />
+
+</navigation>
