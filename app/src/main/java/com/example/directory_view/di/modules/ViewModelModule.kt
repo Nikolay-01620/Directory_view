@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.example.directory_view.ui.screens.add_contact_screen.AddContactViewModel
 import com.example.directory_view.ui.screens.detail_screen.DetailsViewModel
 import com.example.directory_view.ui.screens.edit_screen.EditViewModel
-import com.example.directory_view.ui.screens.main_screen.HomeViewModel
+import com.example.directory_view.ui.screens.home_screen.HomeViewModel
 import com.example.directory_view.utils.ViewModelKey
 import dagger.Binds
 import dagger.Module

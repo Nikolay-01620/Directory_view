@@ -1,4 +1,4 @@
-package com.example.directory_view.ui.screens.main_screen
+package com.example.directory_view.ui.screens.home_screen
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

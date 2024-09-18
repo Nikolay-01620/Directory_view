@@ -58,6 +58,9 @@ dependencies {
 
     //ViewModelScope
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.5")
+    //BindingDelegate
+    implementation("com.github.kirich1409:viewbindingpropertydelegate:1.5.2")
+
 
     implementation(project(":domain"))
     implementation(project(":data"))
