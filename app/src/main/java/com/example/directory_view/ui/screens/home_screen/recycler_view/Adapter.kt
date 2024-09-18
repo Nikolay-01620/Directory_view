@@ -1,27 +1,29 @@
 package com.example.directory_view.ui.screens.home_screen.recycler_view
 
+import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 class Adapter : RecyclerView.Adapter<ViewHolder>() {
-    private var photoId: List<Int> = listOf()
+    private val contactList = ArrayList<Contact>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(photoId[position])
+        holder.bind(contactList[position])
     }
 
     override fun getItemCount(): Int {
-        return photoId.size
+        return contactList.size
     }
 
-    fun addPhoto(photos: List<Int>) {
-        photoId = photos
-        val positionInserted = photoId.size - 1
-        notifyItemInserted(positionInserted)
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addItem(contact: List<Contact>) {
+        contactList.addAll(contact)
+        notifyDataSetChanged()
     }
 
 }

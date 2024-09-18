@@ -27,7 +27,6 @@ class HomeViewModel @Inject constructor(private val directoryRepository: Directo
             val contacts = directoryRepository.getAllContacts()
             allContacts = contacts
             _contacts.value = contacts
-            Log.d("MainScreen", contacts.toString())
         }
     }
 
