@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -17,6 +20,10 @@ import com.example.directory_view.ui.screens.home_screen.recycler_view.Adapter
 import com.example.directory_view.ui.screens.home_screen.recycler_view.Contact
 import com.example.directory_view.ui.screens.home_screen.recycler_view.contactItems
 import com.example.directory_view.utils.DaggerViewModelFactory
+import com.example.directory_view.utils.collectOnLifecycle
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -46,8 +53,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = adapter
-            if (adapter.itemCount == 0) {
-                adapter.addItem(viewModel.fakeLoadContacts())
+            collectOnLifecycle(viewModel.contacts) { contact ->
+                adapter.addItem(contact)
             }
 
             imageButton.setOnClickListener {

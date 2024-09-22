@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.directory_view.R
 import com.example.directory_view.databinding.ItemContactBinding
+import com.example.domain.model.DirectoryDomain
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -18,11 +19,11 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         )
     }
 
-    fun bind(contact: Contact) {
+    fun bind(contact: DirectoryDomain) {
         with(binding) {
-            imageView.setImageResource(contact.imageId)
+            imageView.setImageResource(R.drawable.ic_launcher_foreground)
             contactName.text = contact.name
-            contactPhone.text = contact.number
+            contactPhone.text = contact.phoneNumber
         }
     }
 }

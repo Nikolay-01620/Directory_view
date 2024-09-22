@@ -29,7 +29,7 @@ class HomeViewModel @Inject constructor(private val directoryRepository: Directo
         return contactItems
     }
 
-    fun loadContacts() {
+    private fun loadContacts() {
         viewModelScope.launch {
             val contacts = directoryRepository.getAllContacts()
             allContacts = contacts

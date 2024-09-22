@@ -50,17 +50,11 @@ class AddContactFragment : Fragment(R.layout.fragment_add_contact) {
 
     private fun addContact() {
         with(binding) {
-
-            val name = nameInput.text.toString()
-            val secondName = secondNameInput.text.toString()
-            val email = emailInput.text.toString()
-            val phone = phoneInput.text.toString()
-
             with(viewModel) {
-                onNameChange(name)
-                onSecondNameChange(secondName)
-                onMailChange(email)
-                onPhoneNumberChange(phone)
+                onNameChange(nameInput.text.toString())
+                onSecondNameChange(secondNameInput.text.toString())
+                onMailChange(emailInput.text.toString())
+                onPhoneNumberChange(phoneInput.text.toString())
                 addContact()
             }
         }
