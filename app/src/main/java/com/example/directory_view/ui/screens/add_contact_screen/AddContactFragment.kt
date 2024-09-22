@@ -61,7 +61,7 @@ class AddContactFragment : Fragment(R.layout.fragment_add_contact) {
         }
     }
 
-    private fun setupInputListeners() {
+    private fun setupInputListeners1() {
         with(binding) {
             val inputs = listOf(nameInput, secondNameInput, emailInput, phoneInput)
             inputs.forEach { input ->
@@ -72,13 +72,12 @@ class AddContactFragment : Fragment(R.layout.fragment_add_contact) {
             }
         }
     }
-    private fun setupInputListeners1() {
+    private fun setupInputListeners() {
         with(binding) {
             val inputs = listOf(nameInput, secondNameInput, emailInput, phoneInput)
             inputs.forEach { input ->
                 input.doAfterTextChanged {
                     val isAnyFieldFilled = inputs.any { it.text.isNotBlank() }
-
                     viewLifecycleOwner.lifecycleScope.launch {
                         viewModel.isButtonEnabled.collect {
                             doneButton.isEnabled = isAnyFieldFilled
