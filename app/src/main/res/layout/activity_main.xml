@@ -8,19 +8,13 @@
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <include
-        android:id="@+id/ab"
-        layout="@layout/action_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-<!--    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navView"
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true">
+        app:navGraph="@navigation/nav_graph" /> <!-- Убедитесь, что nav_graph правильно указан -->
 
-    </com.google.android.material.navigation.NavigationView>-->
 
 </androidx.drawerlayout.widget.DrawerLayout>

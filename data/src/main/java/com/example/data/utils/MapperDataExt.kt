@@ -1,4 +1,4 @@
-package com.example.utils
+package com.example.data.utils
 
 import com.example.data.data.model.DirectoryData
 import com.example.domain.model.DirectoryDomain

@@ -14,17 +14,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val navController by lazy { findNavController(R.id.nav_host_fragment) }
     private val binding by viewBinding<ActivityMainBinding>()
-    private val appBarConfiguration by lazy {
-        AppBarConfiguration(navController.graph)
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setSupportActionBar(binding.ab.toolbar)
-        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

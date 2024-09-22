@@ -3,6 +3,8 @@ package com.example.directory_view.ui.screens.home_screen
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.directory_view.ui.screens.home_screen.recycler_view.Contact
+import com.example.directory_view.ui.screens.home_screen.recycler_view.contactItems
 import com.example.domain.model.DirectoryDomain
 import com.example.domain.repositories.DirectoryRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,7 +13,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(private val directoryRepository: DirectoryRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(private val directoryRepository: DirectoryRepository) :
+    ViewModel() {
 
     private val _contacts = MutableStateFlow<List<DirectoryDomain>>(emptyList())
     val contacts: StateFlow<List<DirectoryDomain>> = _contacts.asStateFlow()
@@ -20,6 +23,10 @@ class HomeViewModel @Inject constructor(private val directoryRepository: Directo
 
     init {
         loadContacts()
+    }
+
+    fun fakeLoadContacts(): List<Contact> {
+        return contactItems
     }
 
     fun loadContacts() {

@@ -3,8 +3,8 @@ package com.example.data.data.repositiries
 import com.example.data.data.database.DirectoryDao
 import com.example.domain.model.DirectoryDomain
 import com.example.domain.repositories.DirectoryRepository
-import com.example.utils.toData
-import com.example.utils.toDomain
+import com.example.data.utils.toData
+import com.example.data.utils.toDomain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
