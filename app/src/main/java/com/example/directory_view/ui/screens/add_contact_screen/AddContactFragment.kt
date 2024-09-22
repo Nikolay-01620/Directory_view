@@ -5,12 +5,14 @@ import android.view.View
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.directory_view.DirectoryApplication
 import com.example.directory_view.R
 import com.example.directory_view.databinding.FragmentAddContactBinding
 import com.example.directory_view.ui.Navigator
 import com.example.directory_view.utils.DaggerViewModelFactory
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class AddContactFragment : Fragment(R.layout.fragment_add_contact) {
@@ -66,6 +68,22 @@ class AddContactFragment : Fragment(R.layout.fragment_add_contact) {
                 input.doAfterTextChanged {
                     val isAnyFieldFilled = inputs.any { it.text.isNotBlank() }
                     doneButton.isEnabled = isAnyFieldFilled
+                }
+            }
+        }
+    }
+    private fun setupInputListeners1() {
+        with(binding) {
+            val inputs = listOf(nameInput, secondNameInput, emailInput, phoneInput)
+            inputs.forEach { input ->
+                input.doAfterTextChanged {
+                    val isAnyFieldFilled = inputs.any { it.text.isNotBlank() }
+
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        viewModel.isButtonEnabled.collect {
+                            doneButton.isEnabled = isAnyFieldFilled
+                        }
+                    }
                 }
             }
         }
