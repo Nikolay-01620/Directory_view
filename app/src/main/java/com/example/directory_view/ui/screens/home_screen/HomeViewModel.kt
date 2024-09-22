@@ -1,10 +1,7 @@
 package com.example.directory_view.ui.screens.home_screen
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.directory_view.ui.screens.home_screen.recycler_view.Contact
-import com.example.directory_view.ui.screens.home_screen.recycler_view.contactItems
 import com.example.domain.model.DirectoryDomain
 import com.example.domain.repositories.DirectoryRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,15 +18,7 @@ class HomeViewModel @Inject constructor(private val directoryRepository: Directo
 
     private var allContacts = emptyList<DirectoryDomain>()
 
-    init {
-        loadContacts()
-    }
-
-    fun fakeLoadContacts(): List<Contact> {
-        return contactItems
-    }
-
-    private fun loadContacts() {
+    fun loadContacts() {
         viewModelScope.launch {
             val contacts = directoryRepository.getAllContacts()
             allContacts = contacts
