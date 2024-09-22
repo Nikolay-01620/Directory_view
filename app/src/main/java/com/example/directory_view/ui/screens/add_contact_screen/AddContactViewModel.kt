@@ -36,7 +36,7 @@ class AddContactViewModel @Inject constructor(private val directoryRepository: D
         _secondName,
         _phoneNumber,
         _photoUri
-    ) { name, secondName, phoneNumber, photoUri ->
+    ) { name, secondName, phoneNumber, _ ->
         name.isNotBlank() || secondName.isNotBlank() || phoneNumber.isNotBlank()
     }.stateIn(viewModelScope, SharingStarted.Lazily, false)
 
