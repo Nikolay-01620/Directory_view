@@ -22,8 +22,9 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(contact: DirectoryDomain) {
         with(binding) {
             imageView.setImageResource(R.drawable.ic_launcher_foreground)
-            contactName.text = contact.name
-            contactPhone.text = contact.phoneNumber
+            name.text = contact.name
+            phone.text = contact.phoneNumber
+            secondName.text = contact.secondName
         }
     }
 }
