@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editFragment"
+            app:destination="@id/editFragment" />
     </fragment>
 
     <fragment
@@ -38,5 +41,9 @@
         android:id="@+id/editFragment"
         android:name="com.example.directory_view.ui.screens.edit_screen.EditFragment"
         android:label="fragment_edit"
-        tools:layout="@layout/fragment_edit" />
+        tools:layout="@layout/fragment_edit" >
+        <argument
+            android:name="contactId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

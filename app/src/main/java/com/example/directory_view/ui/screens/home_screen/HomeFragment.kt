@@ -13,15 +13,16 @@ import com.example.directory_view.ui.Navigator
 import com.example.directory_view.ui.screens.home_screen.recycler_view.Adapter
 import com.example.directory_view.utils.DaggerViewModelFactory
 import com.example.directory_view.utils.collectOnLifecycle
+import com.example.domain.model.DirectoryDomain
 import javax.inject.Inject
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment(R.layout.fragment_home), Adapter.OnClickListener {
 
     @Inject
     lateinit var viewModelFactory: DaggerViewModelFactory
     private val viewModel: HomeViewModel by viewModels { viewModelFactory }
     private val binding by viewBinding<FragmentHomeBinding>()
-    private val adapter: Adapter by lazy { Adapter() }
+    private val adapter: Adapter by lazy { Adapter(this) }
     private lateinit var navigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +40,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         navigator = Navigator(this)
         viewModel.loadContacts()
 
+
         with(binding) {
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = adapter
@@ -46,8 +48,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 adapter.addItem(contact)
             }
             imageButton.setOnClickListener {
-                navigator.navigateToAddContact()
+                navigator.homeToAddContactScreen()
             }
         }
+    }
+
+    override fun onClick(contact: DirectoryDomain) {
+       navigator.homeToEditScreen(contact)
     }
 }
