@@ -26,7 +26,7 @@ class Navigator(private val fragment: Fragment) {
     }
 
     fun homeToEditScreen(contact: DirectoryDomain) {
-        val direction = HomeFragmentDirections.actionHomeFragmentToEditFragment()
+        val direction = HomeFragmentDirections.actionHomeFragmentToEditFragment(contact.id)
         fragment.findNavController().navigate(direction)
     }
 }
