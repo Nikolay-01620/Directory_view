@@ -40,7 +40,6 @@ class HomeFragment : Fragment(R.layout.fragment_home), Adapter.OnClickListener {
         navigator = Navigator(this)
         viewModel.loadContacts()
 
-
         with(binding) {
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = adapter
