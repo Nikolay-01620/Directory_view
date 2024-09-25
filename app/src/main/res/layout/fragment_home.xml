@@ -11,7 +11,7 @@
 
 
     <android.widget.EditText
-        android:id="@+id/search_field"
+        android:id="@+id/searchField"
         android:layout_width="371dp"
         android:layout_height="41dp"
         android:layout_marginStart="10dp"

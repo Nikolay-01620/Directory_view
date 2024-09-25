@@ -37,7 +37,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         navigator = Navigator(this)
 
         viewModel.loadContact(args.contactId)
-        observeContactData()
+        collectOnLifecycle()
 
         with(binding) {
             edit.setOnClickListener {
@@ -49,7 +49,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         }
     }
 
-    // Загрузка данных контакта в UI
+    // Загрузка данных в поля
     private fun loadContact(
         name: String,
         secondName: String,
@@ -64,7 +64,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         }
     }
 
-    private fun observeContactData() {
+    private fun collectOnLifecycle() {
         collectOnLifecycle(viewModel.contacts) { contact ->
             contact?.let {
                 loadContact(it.name, it.secondName, it.phoneNumber, it.mail)

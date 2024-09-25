@@ -48,6 +48,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), Adapter.OnClickListener {
             addContact.setOnClickListener {
                 navigator.homeToAddContactScreen()
             }
+            searchField.setOnClickListener {
+                viewModel.searchContacts(searchField.text.toString())
+            }
         }
     }
 

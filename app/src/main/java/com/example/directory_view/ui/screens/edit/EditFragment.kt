@@ -2,6 +2,7 @@ package com.example.directory_view.ui.screens.edit
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -43,6 +44,7 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
             deleteButton.setOnClickListener {
                 deleteContact(args.contactId)
             }
+            setupInputListeners()
             doneButton.setOnClickListener {
                 updateContact(args.contactId)
                 navigator.popBackStack()
@@ -69,6 +71,18 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
             secondNameInput.setText(args.secondName)
             phoneNumberInput.setText(args.phoneNumber)
             emailInput.setText(args.email)
+        }
+    }
+
+    private fun setupInputListeners() {
+        with(binding) {
+            val inputs = listOf(nameInput, secondNameInput, emailInput, phoneNumberInput)
+            inputs.forEach { input ->
+                input.doAfterTextChanged {
+                    val isAnyFieldFilled = inputs.any { it.text.isNotBlank() }
+                    doneButton.isEnabled = isAnyFieldFilled
+                }
+            }
         }
     }
 
