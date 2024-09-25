@@ -35,7 +35,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         navigator = Navigator(this)
 
         loadContact(
-            args.contactId,
             args.name,
             args.secondName,
             args.phoneNumber,
@@ -53,7 +52,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     }
 
     private fun loadContact(
-        contact: Int,
         name: String,
         secondName: String,
         phoneNumber: String,
@@ -65,7 +63,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             this.phoneNumber.text = phoneNumber
             this.email.text = email
         }
-        viewModel.loadContact(contact)
     }
 
 }
