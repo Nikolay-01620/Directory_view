@@ -11,6 +11,7 @@ import com.example.directory_view.R
 import com.example.directory_view.databinding.FragmentDetailsBinding
 import com.example.directory_view.ui.Navigator
 import com.example.directory_view.utils.DaggerViewModelFactory
+import com.example.directory_view.utils.collectOnLifecycle
 import javax.inject.Inject
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {
@@ -34,12 +35,13 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         super.onViewCreated(view, savedInstanceState)
         navigator = Navigator(this)
 
-        loadContact(
-            args.name,
-            args.secondName,
-            args.phoneNumber,
-            args.email
-        )
+        viewModel.loadContact(args.contactId)
+
+        collectOnLifecycle(viewModel.contacts){contact->
+            contact?.let {
+                loadContact(it.name, it.secondName, it.phoneNumber, it.mail)
+            }
+        }
 
         with(binding) {
             edit.setOnClickListener {
