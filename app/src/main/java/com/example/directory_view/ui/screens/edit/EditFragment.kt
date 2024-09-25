@@ -43,17 +43,32 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
             deleteButton.setOnClickListener {
                 deleteContact(args.contactId)
             }
+            doneButton.setOnClickListener {
+                updateContact(args.contactId)
+                navigator.popBackStack()
+            }
         }
+    }
 
+    private fun updateContact(contactId: Int) {
+        with(binding) {
+            with(viewModel) {
+                onNameChange(nameInput.text.toString())
+                onSecondNameChange(secondNameInput.text.toString())
+                onMailChange(emailInput.text.toString())
+                onPhoneNumberChange(phoneNumberInput.text.toString())
+                updateContact(contactId)
+            }
+        }
     }
 
     //загрузка данных в поля
     private fun loadContact() {
         with(binding) {
-            name.setText(args.name)
-            secondName.setText(args.secondName)
-            phoneNumber.setText(args.phoneNumber)
-            email.setText(args.email)
+            nameInput.setText(args.name)
+            secondNameInput.setText(args.secondName)
+            phoneNumberInput.setText(args.phoneNumber)
+            emailInput.setText(args.email)
         }
     }
 

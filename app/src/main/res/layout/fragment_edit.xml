@@ -39,7 +39,7 @@
             android:id="@+id/doneButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"
+            android:enabled="true"
             android:text="Готово" />
     </LinearLayout>
 
@@ -75,26 +75,26 @@
                 android:background="@color/gray" />
 
             <EditText
-                android:id="@+id/name"
+                android:id="@+id/nameInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Имя" />
 
             <EditText
-                android:id="@+id/secondName"
+                android:id="@+id/secondNameInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Фамилия" />
 
             <EditText
-                android:id="@+id/phoneNumber"
+                android:id="@+id/phoneNumberInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Номер телефона"
                 android:inputType="phone" />
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/emailInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Почта"

@@ -55,7 +55,7 @@ class AddContactFragment : Fragment(R.layout.fragment_add_contact) {
                 onNameChange(nameInput.text.toString())
                 onSecondNameChange(secondNameInput.text.toString())
                 onMailChange(emailInput.text.toString())
-                onPhoneNumberChange(phoneInput.text.toString())
+                onPhoneNumberChange(phoneNumberInput.text.toString())
                 addContact()
             }
         }
@@ -63,7 +63,7 @@ class AddContactFragment : Fragment(R.layout.fragment_add_contact) {
 
     private fun setupInputListeners() {
         with(binding) {
-            val inputs = listOf(nameInput, secondNameInput, emailInput, phoneInput)
+            val inputs = listOf(nameInput, secondNameInput, emailInput, phoneNumberInput)
             inputs.forEach { input ->
                 input.doAfterTextChanged {
                     val isAnyFieldFilled = inputs.any { it.text.isNotBlank() }
@@ -72,9 +72,10 @@ class AddContactFragment : Fragment(R.layout.fragment_add_contact) {
             }
         }
     }
+
     private fun setupInputListeners1() {
         with(binding) {
-            val inputs = listOf(nameInput, secondNameInput, emailInput, phoneInput)
+            val inputs = listOf(nameInput, secondNameInput, emailInput, phoneNumberInput)
             inputs.forEach { input ->
                 input.doAfterTextChanged {
                     val isAnyFieldFilled = inputs.any { it.text.isNotBlank() }

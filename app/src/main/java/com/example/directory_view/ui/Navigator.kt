@@ -40,6 +40,9 @@ class Navigator(private val fragment: Fragment) {
     fun editToHomeScreen(){
         fragment.findNavController().navigate(R.id.action_editFragment_to_homeFragment)
     }
+    fun editToDetailsScreen(){
+        fragment.findNavController().navigate(R.id.action_editFragment_to_detailsFragment)
+    }
     fun popBackStack() {
         fragment.findNavController().navigateUp()
     }

@@ -80,5 +80,8 @@
         <action
             android:id="@+id/action_editFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_editFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
 </navigation>
