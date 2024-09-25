@@ -37,7 +37,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
         viewModel.loadContact(args.contactId)
 
-        collectOnLifecycle(viewModel.contacts){contact->
+        collectOnLifecycle(viewModel.contacts) { contact ->
             contact?.let {
                 loadContact(it.name, it.secondName, it.phoneNumber, it.mail)
             }
