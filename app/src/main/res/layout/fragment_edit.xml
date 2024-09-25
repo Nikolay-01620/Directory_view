@@ -75,26 +75,26 @@
                 android:background="@color/gray" />
 
             <EditText
-                android:id="@+id/nameInput"
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Имя" />
 
             <EditText
-                android:id="@+id/secondNameInput"
+                android:id="@+id/secondName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Фамилия" />
 
             <EditText
-                android:id="@+id/phoneInput"
+                android:id="@+id/phoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Номер телефона"
                 android:inputType="phone" />
 
             <EditText
-                android:id="@+id/emailInput"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Почта"

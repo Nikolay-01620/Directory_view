@@ -33,20 +33,32 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         navigator = Navigator(this)
+
+        loadContact()
         with(binding) {
             cancelButton.setOnClickListener {
                 navigator.popBackStack()
             }
             deleteButton.setOnClickListener {
                 deleteContact(args.contactId)
-                navigator.popBackStack()
             }
+        }
+
+    }
+
+    //загрузка данных в поля
+    private fun loadContact() {
+        with(binding) {
+            name.setText(args.name)
+            secondName.setText(args.secondName)
+            phoneNumber.setText(args.phoneNumber)
+            email.setText(args.email)
         }
     }
 
     private fun deleteContact(contactId: Int) {
         viewModel.deleteContact(contactId)
+        navigator.editToHomeScreen()
     }
 }

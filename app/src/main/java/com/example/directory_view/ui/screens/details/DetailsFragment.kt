@@ -12,6 +12,7 @@ import com.example.directory_view.databinding.FragmentDetailsBinding
 import com.example.directory_view.ui.Navigator
 import com.example.directory_view.utils.DaggerViewModelFactory
 import com.example.directory_view.utils.collectOnLifecycle
+import com.example.domain.model.DirectoryDomain
 import javax.inject.Inject
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {
@@ -36,16 +37,11 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         navigator = Navigator(this)
 
         viewModel.loadContact(args.contactId)
-
-        collectOnLifecycle(viewModel.contacts) { contact ->
-            contact?.let {
-                loadContact(it.name, it.secondName, it.phoneNumber, it.mail)
-            }
-        }
+        observeContactData()
 
         with(binding) {
             edit.setOnClickListener {
-                navigator.detailsToEditScreen()
+                editButton()
             }
             contacts.setOnClickListener {
                 navigator.popBackStack()
@@ -53,6 +49,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         }
     }
 
+    // Загрузка данных контакта в UI
     private fun loadContact(
         name: String,
         secondName: String,
@@ -67,4 +64,26 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         }
     }
 
+    private fun observeContactData() {
+        collectOnLifecycle(viewModel.contacts) { contact ->
+            contact?.let {
+                loadContact(it.name, it.secondName, it.phoneNumber, it.mail)
+            }
+        }
+    }
+    private fun editButton() {
+        val contact = viewModel.contacts.value
+        contact?.let {
+            navigator.detailsToEditScreen(
+                DirectoryDomain(
+                    id = it.id,
+                    name = it.name,
+                    secondName = it.secondName,
+                    phoneNumber = it.phoneNumber,
+                    mail = it.mail,
+                    photoUri = it.photoUri
+                )
+            )
+        }
+    }
 }

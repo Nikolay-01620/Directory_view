@@ -44,9 +44,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), Adapter.OnClickListener {
         with(binding) {
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = adapter
-            collectOnLifecycle(viewModel.contacts) { contact ->
-                adapter.addItem(contact)
-            }
+            collectOnLifecycle()
             addContact.setOnClickListener {
                 navigator.homeToAddContactScreen()
             }
@@ -55,5 +53,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), Adapter.OnClickListener {
 
     override fun onClick(contact: DirectoryDomain) {
         navigator.homeToDetailsScreen(contact)
+    }
+
+    private fun collectOnLifecycle() {
+        collectOnLifecycle(viewModel.contacts) { contact ->
+            adapter.addItem(contact)
+        }
     }
 }
