@@ -1,6 +1,6 @@
 package com.example.directory_view.di.components
 
-import com.example.directory_view.ui.screens.add_contact_screen.AddContactFragment
+import com.example.directory_view.ui.screens.add_contact.AddContactFragment
 import dagger.Subcomponent
 
 @Subcomponent

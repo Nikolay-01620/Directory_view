@@ -1,10 +1,10 @@
 package com.example.directory_view.di.modules
 
 import androidx.lifecycle.ViewModel
-import com.example.directory_view.ui.screens.add_contact_screen.AddContactViewModel
-import com.example.directory_view.ui.screens.detail_screen.DetailsViewModel
-import com.example.directory_view.ui.screens.edit_screen.EditViewModel
-import com.example.directory_view.ui.screens.home_screen.HomeViewModel
+import com.example.directory_view.ui.screens.add_contact.AddContactViewModel
+import com.example.directory_view.ui.screens.details.DetailsViewModel
+import com.example.directory_view.ui.screens.edit.EditViewModel
+import com.example.directory_view.ui.screens.home.HomeViewModel
 import com.example.directory_view.utils.ViewModelKey
 import dagger.Binds
 import dagger.Module

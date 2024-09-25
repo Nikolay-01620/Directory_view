@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.screens.home_screen.HomeFragment">
+    tools:context=".ui.screens.home.HomeFragment">
 
 
     <!-- Кнопка для добавления элемента -->
@@ -39,7 +39,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/addContact"
         android:layout_width="39dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"

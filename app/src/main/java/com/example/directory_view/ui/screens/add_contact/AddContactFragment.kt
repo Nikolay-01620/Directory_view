@@ -1,4 +1,4 @@
-package com.example.directory_view.ui.screens.add_contact_screen
+package com.example.directory_view.ui.screens.add_contact
 
 import android.os.Bundle
 import android.view.View

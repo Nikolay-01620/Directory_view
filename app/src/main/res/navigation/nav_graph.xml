@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.directory_view.ui.screens.home_screen.HomeFragment"
+        android:name="com.example.directory_view.ui.screens.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_addContactFragment"
             app:destination="@id/addContactFragment" />
@@ -23,27 +23,31 @@
 
     <fragment
         android:id="@+id/addContactFragment"
-        android:name="com.example.directory_view.ui.screens.add_contact_screen.AddContactFragment"
+        android:name="com.example.directory_view.ui.screens.add_contact.AddContactFragment"
         android:label="fragment_add_contact"
         tools:layout="@layout/fragment_add_contact" />
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.example.directory_view.ui.screens.detail_screen.DetailsFragment"
+        android:name="com.example.directory_view.ui.screens.details.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" >
+        tools:layout="@layout/fragment_details">
         <action
             android:id="@+id/action_detailsFragment_to_editFragment"
             app:destination="@id/editFragment" />
+        <argument
+            android:name="contactId"
+            app:argType="integer" />
     </fragment>
 
     <fragment
         android:id="@+id/editFragment"
-        android:name="com.example.directory_view.ui.screens.edit_screen.EditFragment"
+        android:name="com.example.directory_view.ui.screens.edit.EditFragment"
         android:label="fragment_edit"
-        tools:layout="@layout/fragment_edit" >
+        tools:layout="@layout/fragment_edit">
         <argument
             android:name="contactId"
-            app:argType="integer" />
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 </navigation>

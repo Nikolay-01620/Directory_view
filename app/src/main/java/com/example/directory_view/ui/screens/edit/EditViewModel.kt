@@ -1,4 +1,4 @@
-package com.example.directory_view.ui.screens.add_contact_screen
+package com.example.directory_view.ui.screens.edit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class AddContactViewModel @Inject constructor(private val directoryRepository: DirectoryRepository) :
+class EditViewModel @Inject constructor(private val directoryRepository: DirectoryRepository) :
     ViewModel() {
 
     private val _name = MutableStateFlow("")
@@ -36,7 +36,7 @@ class AddContactViewModel @Inject constructor(private val directoryRepository: D
         _secondName,
         _phoneNumber,
         _photoUri
-    ) { name, secondName, phoneNumber, _ ->
+    ) { name, secondName, phoneNumber, photoUri ->
         name.isNotBlank() || secondName.isNotBlank() || phoneNumber.isNotBlank()
     }.stateIn(viewModelScope, SharingStarted.Lazily, false)
 
@@ -56,47 +56,45 @@ class AddContactViewModel @Inject constructor(private val directoryRepository: D
         _mail.value = newMail
     }
 
-    fun handleImageSelection(uri: ByteArray) {
-        _photoUri.value = uri
-    }
-
-    fun addContact() {
+    fun updateContact(contactId: Int) {
         viewModelScope.launch {
-            if (_name.value.isBlank()
-                && _secondName.value.isBlank()
-                && _phoneNumber.value.isBlank()
-                && _mail.value.isBlank()
-                && _photoUri.value?.isEmpty() ?: true
-            ) {
-                return@launch
-            }
-            val newContact = DirectoryDomain(
+            val updatedContact = DirectoryDomain(
+                id = contactId,
                 name = _name.value,
                 secondName = _secondName.value,
                 phoneNumber = _phoneNumber.value,
                 photoUri = _photoUri.value.toString(),
                 mail = _mail.value
             )
-            directoryRepository.insertContact(newContact)
-            clearFields()
+            directoryRepository.updateContact(updatedContact)
         }
     }
 
-    fun clearFields() {
-        if (_name.value.isNotBlank()) {
-            _name.value = ""
+    fun deleteContact(contactId: Int) {
+        viewModelScope.launch {
+            directoryRepository.deleteContact(contactId)
         }
-        if (_secondName.value.isNotBlank()) {
-            _secondName.value = ""
+    }
+
+    // загрузка данных для редактирования
+    fun loadContact(contactId: Int) {
+        viewModelScope.launch {
+            val contact = directoryRepository.getContactById(contactId)
+            contact?.let {
+                _name.value = it.name
+                _secondName.value = it.secondName
+                _phoneNumber.value = it.phoneNumber
+                _photoUri.value = it.photoUri.toByteArray()
+                _mail.value = it.mail
+            }
         }
-        if (_phoneNumber.value.isNotBlank()) {
-            _phoneNumber.value = ""
-        }
-        if (_photoUri.value?.isNotEmpty() == true) {
-            _photoUri.value = null
-        }
-        if (_mail.value.isNotBlank()) {
-            _mail.value = ""
-        }
+    }
+
+    fun handleImageSelection(uri: ByteArray) {
+        _photoUri.value = uri
+    }
+
+    fun fakeClearFields() {
+
     }
 }

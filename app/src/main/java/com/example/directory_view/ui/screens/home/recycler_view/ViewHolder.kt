@@ -1,9 +1,8 @@
-package com.example.directory_view.ui.screens.home_screen.recycler_view
+package com.example.directory_view.ui.screens.home.recycler_view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.directory_view.R
 import com.example.directory_view.databinding.ItemContactBinding

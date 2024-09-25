@@ -1,4 +1,4 @@
-package com.example.directory_view.ui.screens.home_screen.recycler_view
+package com.example.directory_view.ui.screens.home.recycler_view
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

@@ -1,4 +1,4 @@
-package com.example.directory_view.ui.screens.home_screen
+package com.example.directory_view.ui.screens.home
 
 import android.os.Bundle
 import android.view.View
@@ -10,7 +10,7 @@ import com.example.directory_view.DirectoryApplication
 import com.example.directory_view.R
 import com.example.directory_view.databinding.FragmentHomeBinding
 import com.example.directory_view.ui.Navigator
-import com.example.directory_view.ui.screens.home_screen.recycler_view.Adapter
+import com.example.directory_view.ui.screens.home.recycler_view.Adapter
 import com.example.directory_view.utils.DaggerViewModelFactory
 import com.example.directory_view.utils.collectOnLifecycle
 import com.example.domain.model.DirectoryDomain
@@ -47,13 +47,13 @@ class HomeFragment : Fragment(R.layout.fragment_home), Adapter.OnClickListener {
             collectOnLifecycle(viewModel.contacts) { contact ->
                 adapter.addItem(contact)
             }
-            imageButton.setOnClickListener {
+            addContact.setOnClickListener {
                 navigator.homeToAddContactScreen()
             }
         }
     }
 
     override fun onClick(contact: DirectoryDomain) {
-       navigator.homeToEditScreen(contact)
+        navigator.homeToDetailsScreen(contact)
     }
 }

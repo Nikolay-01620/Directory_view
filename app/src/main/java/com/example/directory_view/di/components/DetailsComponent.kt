@@ -1,6 +1,6 @@
 package com.example.directory_view.di.components
 
-import com.example.directory_view.ui.screens.detail_screen.DetailsFragment
+import com.example.directory_view.ui.screens.details.DetailsFragment
 import dagger.Subcomponent
 
 @Subcomponent
