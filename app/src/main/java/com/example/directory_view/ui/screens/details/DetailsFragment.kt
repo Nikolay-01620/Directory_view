@@ -9,9 +9,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.directory_view.DirectoryApplication
 import com.example.directory_view.R
 import com.example.directory_view.databinding.FragmentDetailsBinding
-import com.example.directory_view.databinding.FragmentEditBinding
 import com.example.directory_view.ui.Navigator
-import com.example.directory_view.ui.screens.edit.EditViewModel
 import com.example.directory_view.utils.DaggerViewModelFactory
 import javax.inject.Inject
 
@@ -35,6 +33,15 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navigator = Navigator(this)
+
+        loadContact(
+            args.contactId,
+            args.name,
+            args.secondName,
+            args.phoneNumber,
+            args.email
+        )
+
         with(binding) {
             edit.setOnClickListener {
                 navigator.detailsToEditScreen()
@@ -44,4 +51,21 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             }
         }
     }
+
+    private fun loadContact(
+        contact: Int,
+        name: String,
+        secondName: String,
+        phoneNumber: String,
+        email: String
+    ) {
+        with(binding) {
+            this.name.text = name
+            this.secondName.text = secondName
+            this.phoneNumber.text = phoneNumber
+            this.email.text = email
+        }
+        viewModel.loadContact(contact)
+    }
+
 }

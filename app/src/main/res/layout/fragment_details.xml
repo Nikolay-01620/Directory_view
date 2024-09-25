@@ -21,7 +21,7 @@
             android:layout_alignParentStart="true"
             android:clickable="true"
             android:text="Контакты"
-            android:textColor="@android:color/black"
+            android:textColor="@color/customBlack"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -41,12 +41,12 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:backgroundTint="@android:color/darker_gray"
+                android:backgroundTint="@color/custom_gray"
                 android:scaleType="centerCrop"
                 android:src="@drawable/baseline_contact_phone_24" />
 
             <TextView
-                android:id="@+id/tvName"
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -54,7 +54,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tvSecondName"
+                android:id="@+id/secondName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -70,7 +70,7 @@
             android:layout_alignParentEnd="true"
             android:clickable="true"
             android:text="Править"
-            android:textColor="@android:color/black"
+            android:textColor="@color/customBlack"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -132,7 +132,7 @@
 
     <!-- Phone and Email Fields -->
     <TextView
-        android:id="@+id/tvPhoneNumber"
+        android:id="@+id/phoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
@@ -141,7 +141,7 @@
         android:text="Номер телефона" />
 
     <TextView
-        android:id="@+id/tvEmail"
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"

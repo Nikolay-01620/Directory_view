@@ -13,7 +13,14 @@ class Navigator(private val fragment: Fragment) {
     }
 
     fun homeToDetailsScreen(contact: DirectoryDomain) {
-        val direction = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(contact.id)
+        val direction =
+            HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
+                contact.id,
+                contact.name,
+                contact.secondName,
+                contact.phoneNumber,
+                contact.mail
+            )
         fragment.findNavController().navigate(direction)
     }
 
