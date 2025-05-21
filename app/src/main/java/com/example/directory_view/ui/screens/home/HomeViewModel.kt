@@ -32,7 +32,6 @@ class HomeViewModel @Inject constructor(private val directoryRepository: Directo
         if (query.isEmpty()) {
             _contacts.value = allContacts
 
-
         } else {
             val searchTerms =
                 query.split(" ")
@@ -46,5 +45,4 @@ class HomeViewModel @Inject constructor(private val directoryRepository: Directo
             }
         }
     }
-
 }
