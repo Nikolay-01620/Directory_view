@@ -19,7 +19,7 @@ abstract class DirectoryDatabase : RoomDatabase() {
                     if (database == null) {
                         database = Room.databaseBuilder(
                             context.applicationContext,
-                            DirectoryDatabase::class.java, "directory_database4"
+                            DirectoryDatabase::class.java, "directory_database5"
                         ).build()
                     }
                 }
