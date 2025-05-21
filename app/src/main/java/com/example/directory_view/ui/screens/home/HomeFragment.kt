@@ -53,13 +53,19 @@ class HomeFragment : Fragment(R.layout.fragment_home), Adapter.OnClickListener {
         }
     }
 
+    private fun insertData(newList: List<DirectoryDomain>) {
+        adapter.submitList(newList)
+    }
+
     override fun onClick(contact: DirectoryDomain) {
         navigator.homeToDetailsScreen(contact)
     }
 
     private fun collectOnLifecycle() {
-        collectOnLifecycle(viewModel.contacts) { contact ->
-            adapter.addItem(contact)
+
+        collectOnLifecycle(viewModel.contacts) { state ->
+            insertData(state)
         }
+
     }
 }

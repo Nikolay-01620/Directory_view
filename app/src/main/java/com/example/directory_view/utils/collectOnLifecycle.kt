@@ -12,7 +12,6 @@ fun <T> Fragment.collectOnLifecycle(flow: Flow<T>, collector: FlowCollector<T>) 
     viewLifecycleOwner.lifecycleScope.launch {
         viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
             flow.collect(collector)
-
         }
     }
 }
